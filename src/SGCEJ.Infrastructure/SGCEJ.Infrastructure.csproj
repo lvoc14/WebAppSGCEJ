@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="EntityConfig\" />
+    <Folder Include="Repository\" />
+    <Folder Include="Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SGCEJ.ApplicationCore\SGCEJ.ApplicationCore.csproj" />
+  </ItemGroup>
+
+</Project>
