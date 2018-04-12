@@ -21,18 +21,14 @@ namespace SGCEJ.ApplicationCore.Entity
         public string CPF { get; set; }
 
         public string RG { get; set; }
+       
+        public Contato Contatos { get; set; }
 
-        public string Endereco { get; set; }
+        public Endereco Enderecos { get; set; }
 
-        public string Bairro { get; set; }
 
-        public string Estado { get; set; }
 
-        public string Telefone   { get; set; }
 
-        public string Celular { get; set; }
-
-        public string Email { get; set; }
 
 
 
