@@ -11,8 +11,8 @@ using System;
 namespace SGCEJ.Infrastructure.Migrations
 {
     [DbContext(typeof(ClienteContext))]
-    [Migration("20180418195119_DandoValoresNasEntidades")]
-    partial class DandoValoresNasEntidades
+    [Migration("20180418200707_Inicio")]
+    partial class Inicio
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,8 +32,6 @@ namespace SGCEJ.Infrastructure.Migrations
 
                     b.Property<string>("DataNascimento");
 
-                    b.Property<string>("EnderecosEnderecoId");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("Varchar(200)");
@@ -43,8 +41,6 @@ namespace SGCEJ.Infrastructure.Migrations
                         .HasColumnType("Varchar(15)");
 
                     b.HasKey("ClienteId");
-
-                    b.HasIndex("EnderecosEnderecoId");
 
                     b.ToTable("Cliente");
                 });
@@ -88,6 +84,8 @@ namespace SGCEJ.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(10)");
 
+                    b.Property<int>("ClienteId");
+
                     b.Property<string>("Complemento")
                         .IsRequired()
                         .HasColumnType("varchar(100)");
@@ -102,14 +100,44 @@ namespace SGCEJ.Infrastructure.Migrations
 
                     b.HasKey("EnderecoId");
 
+                    b.HasIndex("ClienteId")
+                        .IsUnique();
+
                     b.ToTable("Endereco");
                 });
 
-            modelBuilder.Entity("SGCEJ.ApplicationCore.Entity.Cliente", b =>
+            modelBuilder.Entity("SGCEJ.ApplicationCore.Entity.Profissao", b =>
                 {
-                    b.HasOne("SGCEJ.ApplicationCore.Entity.Endereco", "Enderecos")
-                        .WithMany("Clientes")
-                        .HasForeignKey("EnderecosEnderecoId");
+                    b.Property<int>("ProfissaoId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CBO");
+
+                    b.Property<string>("Descricao");
+
+                    b.Property<string>("Nome");
+
+                    b.HasKey("ProfissaoId");
+
+                    b.ToTable("Profissao");
+                });
+
+            modelBuilder.Entity("SGCEJ.ApplicationCore.Entity.ProfissaoCliente", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ClienteId");
+
+                    b.Property<int>("ProfissaoId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
+
+                    b.HasIndex("ProfissaoId");
+
+                    b.ToTable("ProfissaoCliente");
                 });
 
             modelBuilder.Entity("SGCEJ.ApplicationCore.Entity.Contato", b =>
@@ -117,6 +145,27 @@ namespace SGCEJ.Infrastructure.Migrations
                     b.HasOne("SGCEJ.ApplicationCore.Entity.Cliente", "Cliente")
                         .WithMany("Contatos")
                         .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SGCEJ.ApplicationCore.Entity.Endereco", b =>
+                {
+                    b.HasOne("SGCEJ.ApplicationCore.Entity.Cliente", "Clientes")
+                        .WithOne("Endereco")
+                        .HasForeignKey("SGCEJ.ApplicationCore.Entity.Endereco", "ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SGCEJ.ApplicationCore.Entity.ProfissaoCliente", b =>
+                {
+                    b.HasOne("SGCEJ.ApplicationCore.Entity.Cliente", "Cliente")
+                        .WithMany("ProfissoesCliente")
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SGCEJ.ApplicationCore.Entity.Profissao", "Profissao")
+                        .WithMany("ProfissoesCliente")
+                        .HasForeignKey("ProfissaoId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

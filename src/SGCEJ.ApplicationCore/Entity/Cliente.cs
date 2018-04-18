@@ -26,12 +26,7 @@ namespace SGCEJ.ApplicationCore.Entity
 
         public Endereco Endereco { get; set; }
 
-
-
-
-
-
-
+        public ICollection <ProfissaoCliente> ProfissoesCliente { get; set; }
 
 
 
