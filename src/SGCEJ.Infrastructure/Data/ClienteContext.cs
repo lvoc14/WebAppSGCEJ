@@ -24,7 +24,7 @@ namespace SGCEJ.Infrastructure.DateTime
             modelBuilder.Entity<Cliente>().ToTable("Cliente");
             modelBuilder.Entity<Contato>().ToTable("Contato");
 
-            #region /Cliente
+            #region Cliente
             modelBuilder.Entity<Cliente>().Property(e => e.CPF)
                 .HasColumnType("Varchar(11)")
                 .IsRequired();
@@ -33,9 +33,7 @@ namespace SGCEJ.Infrastructure.DateTime
                .HasColumnType("Varchar(200)")
                .IsRequired();
 
-            modelBuilder.Entity<Cliente>().Property(e => e.DataNascimento)
-                   .HasColumnType("datetime2")
-                   .IsRequired();
+            
 
             modelBuilder.Entity<Cliente>().Property(e => e.RG)
                .HasColumnType("Varchar(15)")
@@ -43,7 +41,7 @@ namespace SGCEJ.Infrastructure.DateTime
 
             #endregion
 
-            #region /Contato
+            #region Contato
             modelBuilder.Entity<Contato>().Property(e => e.Celular)
                .HasColumnType("Varchar(10)")
                .IsRequired();
@@ -57,7 +55,8 @@ namespace SGCEJ.Infrastructure.DateTime
                .IsRequired();
             #endregion
 
-            #region/Endereco
+            #region Endereco
+
             modelBuilder.Entity<Endereco>().Property(e => e.Bairro)
               .HasColumnType("Varchar(100)")
               .IsRequired();
@@ -65,6 +64,7 @@ namespace SGCEJ.Infrastructure.DateTime
             modelBuilder.Entity<Endereco>().Property(e => e.Estado)
                 .HasColumnType("Varchar(2)")
                 .IsRequired();
+
             #endregion
 
 

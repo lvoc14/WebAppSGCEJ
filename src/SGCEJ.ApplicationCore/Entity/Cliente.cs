@@ -16,7 +16,7 @@ namespace SGCEJ.ApplicationCore.Entity
 
         public string Nome { get; set; }
 
-        public DateTime DataNascimento { get; set; }
+        public string DataNascimento { get; set; }
 
         public string CPF { get; set; }
 
