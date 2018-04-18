@@ -110,11 +110,17 @@ namespace SGCEJ.Infrastructure.Migrations
                     b.Property<int>("ProfissaoId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CBO");
+                    b.Property<string>("CBO")
+                        .IsRequired()
+                        .HasColumnType("Varchar(10)");
 
-                    b.Property<string>("Descricao");
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("Varchar(1000)");
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("Varchar(400)");
 
                     b.HasKey("ProfissaoId");
 
@@ -142,7 +148,7 @@ namespace SGCEJ.Infrastructure.Migrations
             modelBuilder.Entity("SGCEJ.ApplicationCore.Entity.Contato", b =>
                 {
                     b.HasOne("SGCEJ.ApplicationCore.Entity.Cliente", "Cliente")
-                        .WithMany("Contatos")
+                        .WithMany("Contato")
                         .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

@@ -31,9 +31,9 @@ namespace SGCEJ.Infrastructure.Migrations
                 {
                     ProfissaoId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CBO = table.Column<string>(nullable: true),
-                    Descricao = table.Column<string>(nullable: true),
-                    Nome = table.Column<string>(nullable: true)
+                    CBO = table.Column<string>(type: "Varchar(10)", nullable: false),
+                    Descricao = table.Column<string>(type: "Varchar(1000)", nullable: false),
+                    Nome = table.Column<string>(type: "Varchar(400)", nullable: false)
                 },
                 constraints: table =>
                 {

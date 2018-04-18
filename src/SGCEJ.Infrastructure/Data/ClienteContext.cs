@@ -121,7 +121,24 @@ namespace SGCEJ.Infrastructure.DateTime
 
             #endregion
 
+            #region Profissao Cliente 
 
+            modelBuilder.Entity<ProfissaoCliente>()
+                .HasKey(c => c.Id);
+
+            modelBuilder.Entity<ProfissaoCliente>()
+                .HasOne(pc => pc.Cliente)
+                .WithMany(c => c.ProfissoesCliente)
+                .HasForeignKey(c => c.ClienteId);
+
+            modelBuilder.Entity<ProfissaoCliente>()
+               .HasOne(pc => pc.Profissao)
+               .WithMany(c => c.ProfissoesCliente)
+               .HasForeignKey(c => c.ProfissaoId);
+
+
+
+            #endregion
 
         }
     }
