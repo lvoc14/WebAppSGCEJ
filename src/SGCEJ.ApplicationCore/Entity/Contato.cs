@@ -4,10 +4,10 @@ using System.Text;
 
 namespace SGCEJ.ApplicationCore.Entity
 {
-    public class Contatos
+    public class Contato
     {
 
-        public int ContatosId { get; set; }
+        public int ContatoId { get; set; }
 
         public string Celular { get; set; }
 

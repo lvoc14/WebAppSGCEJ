@@ -16,13 +16,13 @@ namespace SGCEJ.ApplicationCore.Entity
 
         public string Nome { get; set; }
 
-        public DateTime DataNascimento { get; set; }
+        public string DataNascimento { get; set; }
 
         public string CPF { get; set; }
 
         public string RG { get; set; }
        
-        public ICollection<Contatos> Contatos { get; set; }
+        public ICollection<Contato> Contatos { get; set; }
 
         public Endereco Enderecos { get; set; }
 

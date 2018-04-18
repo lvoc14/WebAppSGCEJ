@@ -11,9 +11,10 @@ using System;
 namespace SGCEJ.Infrastructure.Migrations
 {
     [DbContext(typeof(ClienteContext))]
-    partial class ClienteContextModelSnapshot : ModelSnapshot
+    [Migration("20180418040551_AdicionaContatos")]
+    partial class AdicionaContatos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,7 +28,7 @@ namespace SGCEJ.Infrastructure.Migrations
 
                     b.Property<string>("CPF");
 
-                    b.Property<string>("DataNascimento");
+                    b.Property<System.DateTime>("DataNascimento");
 
                     b.Property<string>("EnderecosEnderecoId");
 

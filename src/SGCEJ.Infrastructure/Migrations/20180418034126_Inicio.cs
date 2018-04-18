@@ -30,7 +30,7 @@ namespace SGCEJ.Infrastructure.Migrations
                     ClienteId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CPF = table.Column<string>(nullable: true),
-                    DataNascimento = table.Column<DateTime>(nullable: false),
+                    DataNascimento = table.Column<System.DateTime>(nullable: false),
                     EnderecosEnderecoId = table.Column<string>(nullable: true),
                     Nome = table.Column<string>(nullable: true),
                     RG = table.Column<string>(nullable: true)

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
-using SGCEJ.Infrastructure.Data;
+using SGCEJ.Infrastructure.DateTime;
 using System;
 
 namespace SGCEJ.Infrastructure.Migrations
@@ -28,7 +28,7 @@ namespace SGCEJ.Infrastructure.Migrations
 
                     b.Property<string>("CPF");
 
-                    b.Property<DateTime>("DataNascimento");
+                    b.Property<System.DateTime>("DataNascimento");
 
                     b.Property<string>("EnderecosEnderecoId");
 
