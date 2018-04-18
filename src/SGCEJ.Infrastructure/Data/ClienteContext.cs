@@ -24,9 +24,23 @@ namespace SGCEJ.Infrastructure.DateTime
             modelBuilder.Entity<Cliente>().ToTable("Cliente");
             modelBuilder.Entity<Contato>().ToTable("Contato");
             modelBuilder.Entity<Endereco>().ToTable("Endereco");
+            modelBuilder.Entity<Profissao>().ToTable("Profissao");
+            modelBuilder.Entity<ProfissaoCliente>().ToTable("ProfissaoCliente");
+
+
 
 
             #region Cliente
+
+            modelBuilder.Entity<Cliente>()
+                .HasKey(c => c.ClienteId);
+
+            modelBuilder.Entity<Cliente>()
+                .HasMany(c => c.Contato)
+                .WithOne(c => c.Cliente)
+                .HasForeignKey(c => c.ClienteId)
+                .HasPrincipalKey(c => c.ClienteId);
+
             modelBuilder.Entity<Cliente>().Property(e => e.CPF)
                 .HasColumnType("Varchar(11)")
                 .IsRequired();
@@ -44,6 +58,13 @@ namespace SGCEJ.Infrastructure.DateTime
             #endregion
 
             #region Contato
+
+            modelBuilder.Entity<Contato>()
+               .HasOne(c => c.Cliente)
+               .WithMany(c => c.Contato)
+               .HasForeignKey(c => c.ClienteId)
+               .HasPrincipalKey(c => c.ClienteId);
+
             modelBuilder.Entity<Contato>().Property(e => e.Celular)
                .HasColumnType("Varchar(10)")
                .IsRequired();
@@ -82,6 +103,24 @@ namespace SGCEJ.Infrastructure.DateTime
 
 
             #endregion
+
+            #region Profissao
+
+            modelBuilder.Entity<Profissao>().Property(e => e.Nome)
+              .HasColumnType("Varchar(400)")
+              .IsRequired();
+
+            modelBuilder.Entity<Profissao>().Property(e => e.Descricao)
+              .HasColumnType("Varchar(1000)")
+              .IsRequired();
+
+            modelBuilder.Entity<Profissao>().Property(e => e.CBO)
+              .HasColumnType("Varchar(10)")
+              .IsRequired();
+
+
+            #endregion
+
 
 
         }

@@ -22,11 +22,11 @@ namespace SGCEJ.ApplicationCore.Entity
 
         public string RG { get; set; }
        
-        public ICollection<Contato> Contatos { get; set; }
+        public ICollection<Contato> Contato { get; set; }
 
         public Endereco Endereco { get; set; }
 
-        public ICollection <ProfissaoCliente> ProfissoesCliente { get; set; }
+        public ICollection <ProfissaoCliente>ProfissoesCliente { get; set; }
 
 
 
