@@ -12,7 +12,15 @@ namespace SGCEJ.ApplicationCore.Entity
 
         public string Estado { get; set; }
 
-        public ICollection<Cliente> Clientes { get; set; }
+        public string CEP { get; set; }
+
+        public string NumeroCasa { get; set; }
+
+        public string Complemento { get; set; }
+
+        public int ClienteId { get; set; }
+
+        public Cliente Clientes { get; set; }
 
        
 

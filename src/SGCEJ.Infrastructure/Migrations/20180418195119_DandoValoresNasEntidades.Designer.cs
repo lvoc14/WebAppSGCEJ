@@ -11,8 +11,8 @@ using System;
 namespace SGCEJ.Infrastructure.Migrations
 {
     [DbContext(typeof(ClienteContext))]
-    [Migration("20180418162344_AlteradoContato")]
-    partial class AlteradoContato
+    [Migration("20180418195119_DandoValoresNasEntidades")]
+    partial class DandoValoresNasEntidades
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,15 +26,21 @@ namespace SGCEJ.Infrastructure.Migrations
                     b.Property<int>("ClienteId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CPF");
+                    b.Property<string>("CPF")
+                        .IsRequired()
+                        .HasColumnType("Varchar(11)");
 
                     b.Property<string>("DataNascimento");
 
                     b.Property<string>("EnderecosEnderecoId");
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("Varchar(200)");
 
-                    b.Property<string>("RG");
+                    b.Property<string>("RG")
+                        .IsRequired()
+                        .HasColumnType("Varchar(15)");
 
                     b.HasKey("ClienteId");
 
@@ -48,13 +54,19 @@ namespace SGCEJ.Infrastructure.Migrations
                     b.Property<int>("ContatoId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Celular");
+                    b.Property<string>("Celular")
+                        .IsRequired()
+                        .HasColumnType("Varchar(10)");
 
                     b.Property<int>("ClienteId");
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("Varchar(100)");
 
-                    b.Property<string>("TelefoneFixo");
+                    b.Property<string>("TelefoneFixo")
+                        .IsRequired()
+                        .HasColumnType("Varchar(15)");
 
                     b.HasKey("ContatoId");
 
@@ -68,11 +80,25 @@ namespace SGCEJ.Infrastructure.Migrations
                     b.Property<string>("EnderecoId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Bairro");
+                    b.Property<string>("Bairro")
+                        .IsRequired()
+                        .HasColumnType("Varchar(100)");
 
-                    b.Property<string>("Estado");
+                    b.Property<string>("CEP")
+                        .IsRequired()
+                        .HasColumnType("varchar(10)");
 
-                    b.Property<string>("Telefone");
+                    b.Property<string>("Complemento")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasColumnType("Varchar(2)");
+
+                    b.Property<string>("NumeroCasa")
+                        .IsRequired()
+                        .HasColumnType("varchar(5)");
 
                     b.HasKey("EnderecoId");
 

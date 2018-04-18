@@ -24,7 +24,7 @@ namespace SGCEJ.ApplicationCore.Entity
        
         public ICollection<Contato> Contatos { get; set; }
 
-        public Endereco Enderecos { get; set; }
+        public Endereco Endereco { get; set; }
 
 
 

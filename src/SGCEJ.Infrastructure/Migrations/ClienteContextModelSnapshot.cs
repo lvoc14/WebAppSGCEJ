@@ -83,9 +83,21 @@ namespace SGCEJ.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("Varchar(100)");
 
+                    b.Property<string>("CEP")
+                        .IsRequired()
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("Complemento")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
                     b.Property<string>("Estado")
                         .IsRequired()
                         .HasColumnType("Varchar(2)");
+
+                    b.Property<string>("NumeroCasa")
+                        .IsRequired()
+                        .HasColumnType("varchar(5)");
 
                     b.HasKey("EnderecoId");
 

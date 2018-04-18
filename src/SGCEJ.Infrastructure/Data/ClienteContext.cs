@@ -23,6 +23,8 @@ namespace SGCEJ.Infrastructure.DateTime
         {
             modelBuilder.Entity<Cliente>().ToTable("Cliente");
             modelBuilder.Entity<Contato>().ToTable("Contato");
+            modelBuilder.Entity<Endereco>().ToTable("Endereco");
+
 
             #region Cliente
             modelBuilder.Entity<Cliente>().Property(e => e.CPF)
@@ -64,6 +66,20 @@ namespace SGCEJ.Infrastructure.DateTime
             modelBuilder.Entity<Endereco>().Property(e => e.Estado)
                 .HasColumnType("Varchar(2)")
                 .IsRequired();
+
+            modelBuilder.Entity<Endereco>().Property(e => e.CEP)
+                .HasColumnType("varchar(10)")
+                .IsRequired();
+
+            modelBuilder.Entity<Endereco>().Property(e => e.NumeroCasa)
+                .HasColumnType("varchar(5)")
+                .IsRequired();
+
+            modelBuilder.Entity<Endereco>().Property(e => e.Complemento)
+                .HasColumnType("varchar(100)")
+                .IsRequired();
+
+
 
             #endregion
 

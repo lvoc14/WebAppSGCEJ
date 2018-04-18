@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SGCEJ.Infrastructure.Migrations
 {
-    public partial class AlteradoContato : Migration
+    public partial class DandoValoresNasEntidades : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

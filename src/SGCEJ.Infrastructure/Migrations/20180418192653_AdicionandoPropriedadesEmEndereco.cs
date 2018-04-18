@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace SGCEJ.Infrastructure.Migrations
 {
-    public partial class Inicio : Migration
+    public partial class AdicionandoPropriedadesEmEndereco : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,9 +14,11 @@ namespace SGCEJ.Infrastructure.Migrations
                 columns: table => new
                 {
                     EnderecoId = table.Column<string>(nullable: false),
-                    Bairro = table.Column<string>(nullable: true),
-                    Estado = table.Column<string>(nullable: true),
-                    Telefone = table.Column<string>(nullable: true)
+                    Bairro = table.Column<string>(type: "Varchar(100)", nullable: false),
+                    CEP = table.Column<string>(type: "varchar(10)", nullable: false),
+                    Complemento = table.Column<string>(type: "varchar(100)", nullable: false),
+                    Estado = table.Column<string>(type: "Varchar(2)", nullable: false),
+                    NumeroCasa = table.Column<string>(type: "varchar(5)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,11 +31,11 @@ namespace SGCEJ.Infrastructure.Migrations
                 {
                     ClienteId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CPF = table.Column<string>(nullable: true),
-                    DataNascimento = table.Column<System.DateTime>(nullable: false),
+                    CPF = table.Column<string>(type: "Varchar(11)", nullable: false),
+                    DataNascimento = table.Column<string>(nullable: true),
                     EnderecosEnderecoId = table.Column<string>(nullable: true),
-                    Nome = table.Column<string>(nullable: true),
-                    RG = table.Column<string>(nullable: true)
+                    Nome = table.Column<string>(type: "Varchar(200)", nullable: false),
+                    RG = table.Column<string>(type: "Varchar(15)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,21 +49,21 @@ namespace SGCEJ.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Contatos",
+                name: "Contato",
                 columns: table => new
                 {
-                    ContatosId = table.Column<int>(nullable: false)
+                    ContatoId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Celular = table.Column<string>(nullable: true),
+                    Celular = table.Column<string>(type: "Varchar(10)", nullable: false),
                     ClienteId = table.Column<int>(nullable: false),
-                    Email = table.Column<string>(nullable: true),
-                    TelefoneFixo = table.Column<string>(nullable: true)
+                    Email = table.Column<string>(type: "Varchar(100)", nullable: false),
+                    TelefoneFixo = table.Column<string>(type: "Varchar(15)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Contatos", x => x.ContatosId);
+                    table.PrimaryKey("PK_Contato", x => x.ContatoId);
                     table.ForeignKey(
-                        name: "FK_Contatos_Cliente_ClienteId",
+                        name: "FK_Contato_Cliente_ClienteId",
                         column: x => x.ClienteId,
                         principalTable: "Cliente",
                         principalColumn: "ClienteId",
@@ -74,15 +76,15 @@ namespace SGCEJ.Infrastructure.Migrations
                 column: "EnderecosEnderecoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Contatos_ClienteId",
-                table: "Contatos",
+                name: "IX_Contato_ClienteId",
+                table: "Contato",
                 column: "ClienteId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Contatos");
+                name: "Contato");
 
             migrationBuilder.DropTable(
                 name: "Cliente");
