@@ -27,8 +27,6 @@ namespace SGCEJ.Infrastructure.Migrations
 
                     b.Property<string>("CPF");
 
-                    b.Property<int?>("ContatosContatoId");
-
                     b.Property<DateTime>("DataNascimento");
 
                     b.Property<string>("EnderecosEnderecoId");
@@ -39,27 +37,29 @@ namespace SGCEJ.Infrastructure.Migrations
 
                     b.HasKey("ClienteId");
 
-                    b.HasIndex("ContatosContatoId");
-
                     b.HasIndex("EnderecosEnderecoId");
 
                     b.ToTable("Cliente");
                 });
 
-            modelBuilder.Entity("SGCEJ.ApplicationCore.Entity.Contato", b =>
+            modelBuilder.Entity("SGCEJ.ApplicationCore.Entity.Contatos", b =>
                 {
-                    b.Property<int>("ContatoId")
+                    b.Property<int>("ContatosId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Celular");
+
+                    b.Property<int>("ClienteId");
 
                     b.Property<string>("Email");
 
                     b.Property<string>("TelefoneFixo");
 
-                    b.HasKey("ContatoId");
+                    b.HasKey("ContatosId");
 
-                    b.ToTable("Contato");
+                    b.HasIndex("ClienteId");
+
+                    b.ToTable("Contatos");
                 });
 
             modelBuilder.Entity("SGCEJ.ApplicationCore.Entity.Endereco", b =>
@@ -80,13 +80,17 @@ namespace SGCEJ.Infrastructure.Migrations
 
             modelBuilder.Entity("SGCEJ.ApplicationCore.Entity.Cliente", b =>
                 {
-                    b.HasOne("SGCEJ.ApplicationCore.Entity.Contato", "Contatos")
-                        .WithMany("Clientes")
-                        .HasForeignKey("ContatosContatoId");
-
                     b.HasOne("SGCEJ.ApplicationCore.Entity.Endereco", "Enderecos")
                         .WithMany("Clientes")
                         .HasForeignKey("EnderecosEnderecoId");
+                });
+
+            modelBuilder.Entity("SGCEJ.ApplicationCore.Entity.Contatos", b =>
+                {
+                    b.HasOne("SGCEJ.ApplicationCore.Entity.Cliente", "Cliente")
+                        .WithMany("Contatos")
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
