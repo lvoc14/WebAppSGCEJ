@@ -12,8 +12,6 @@ namespace SGCEJ.ApplicationCore.Entity
 
         public string Estado { get; set; }
 
-        public string Telefone { get; set; }
-
         public ICollection<Cliente> Clientes { get; set; }
 
        

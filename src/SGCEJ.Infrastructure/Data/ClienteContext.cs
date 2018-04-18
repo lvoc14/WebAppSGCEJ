@@ -23,9 +23,50 @@ namespace SGCEJ.Infrastructure.DateTime
         {
             modelBuilder.Entity<Cliente>().ToTable("Cliente");
             modelBuilder.Entity<Contato>().ToTable("Contato");
+
+            #region /Cliente
+            modelBuilder.Entity<Cliente>().Property(e => e.CPF)
+                .HasColumnType("Varchar(11)")
+                .IsRequired();
+
+            modelBuilder.Entity<Cliente>().Property(e => e.Nome)
+               .HasColumnType("Varchar(200)")
+               .IsRequired();
+
             modelBuilder.Entity<Cliente>().Property(e => e.DataNascimento)
-            .HasColumnType("string")
-            .IsRequired();
+                   .HasColumnType("datetime2")
+                   .IsRequired();
+
+            modelBuilder.Entity<Cliente>().Property(e => e.RG)
+               .HasColumnType("Varchar(15)")
+               .IsRequired();
+
+            #endregion
+
+            #region /Contato
+            modelBuilder.Entity<Contato>().Property(e => e.Celular)
+               .HasColumnType("Varchar(10)")
+               .IsRequired();
+
+            modelBuilder.Entity<Contato>().Property(e => e.Email)
+               .HasColumnType("Varchar(100)")
+               .IsRequired();
+
+            modelBuilder.Entity<Contato>().Property(e => e.TelefoneFixo)
+               .HasColumnType("Varchar(15)")
+               .IsRequired();
+            #endregion
+
+            #region/Endereco
+            modelBuilder.Entity<Endereco>().Property(e => e.Bairro)
+              .HasColumnType("Varchar(100)")
+              .IsRequired();
+
+            modelBuilder.Entity<Endereco>().Property(e => e.Estado)
+                .HasColumnType("Varchar(2)")
+                .IsRequired();
+            #endregion
+
 
         }
     }

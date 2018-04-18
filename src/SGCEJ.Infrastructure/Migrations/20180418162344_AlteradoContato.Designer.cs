@@ -11,8 +11,8 @@ using System;
 namespace SGCEJ.Infrastructure.Migrations
 {
     [DbContext(typeof(ClienteContext))]
-    [Migration("20180418040551_AdicionaContatos")]
-    partial class AdicionaContatos
+    [Migration("20180418162344_AlteradoContato")]
+    partial class AlteradoContato
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,7 +28,7 @@ namespace SGCEJ.Infrastructure.Migrations
 
                     b.Property<string>("CPF");
 
-                    b.Property<System.DateTime>("DataNascimento");
+                    b.Property<string>("DataNascimento");
 
                     b.Property<string>("EnderecosEnderecoId");
 
