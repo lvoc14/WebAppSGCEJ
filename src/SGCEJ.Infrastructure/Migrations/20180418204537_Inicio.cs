@@ -26,6 +26,19 @@ namespace SGCEJ.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Menu",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false),
+                    MyProperty = table.Column<int>(nullable: true),
+                    Titulo = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Menu", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Profissao",
                 columns: table => new
                 {
@@ -140,6 +153,9 @@ namespace SGCEJ.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Endereco");
+
+            migrationBuilder.DropTable(
+                name: "Menu");
 
             migrationBuilder.DropTable(
                 name: "ProfissaoCliente");

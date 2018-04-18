@@ -11,7 +11,7 @@ using System;
 namespace SGCEJ.Infrastructure.Migrations
 {
     [DbContext(typeof(ClienteContext))]
-    [Migration("20180418202858_Inicio")]
+    [Migration("20180418204537_Inicio")]
     partial class Inicio
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -106,6 +106,19 @@ namespace SGCEJ.Infrastructure.Migrations
                     b.ToTable("Endereco");
                 });
 
+            modelBuilder.Entity("SGCEJ.ApplicationCore.Entity.Menu", b =>
+                {
+                    b.Property<int>("Id");
+
+                    b.Property<int?>("MyProperty");
+
+                    b.Property<string>("Titulo");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Menu");
+                });
+
             modelBuilder.Entity("SGCEJ.ApplicationCore.Entity.Profissao", b =>
                 {
                     b.Property<int>("ProfissaoId")
@@ -159,6 +172,14 @@ namespace SGCEJ.Infrastructure.Migrations
                     b.HasOne("SGCEJ.ApplicationCore.Entity.Cliente", "Clientes")
                         .WithOne("Endereco")
                         .HasForeignKey("SGCEJ.ApplicationCore.Entity.Endereco", "ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SGCEJ.ApplicationCore.Entity.Menu", b =>
+                {
+                    b.HasOne("SGCEJ.ApplicationCore.Entity.Menu")
+                        .WithMany("SubMenu")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

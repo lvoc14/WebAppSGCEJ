@@ -140,6 +140,15 @@ namespace SGCEJ.Infrastructure.DateTime
 
             #endregion
 
+            #region Menu
+
+            modelBuilder.Entity<Menu>()
+                .HasMany(x => x.SubMenu)
+                .WithOne()
+                .HasForeignKey(x => x.Id);
+
+            #endregion
+
         }
     }
 }
